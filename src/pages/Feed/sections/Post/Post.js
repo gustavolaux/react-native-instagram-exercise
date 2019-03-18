@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Image, View, Text, StyleSheet, Dimensions, Platform } from 'react-native';
+import { Image, View, Text, StyleSheet, Dimensions } from 'react-native';
 
 const window = Dimensions.get('window');
 
@@ -20,7 +20,7 @@ export class Post extends PureComponent {
                 </View>
                 <Image
                     style={ styles.icon }
-                    source={ require('../../assets/dots.png') }
+                    source={ require('../../../../assets/images/dots.png') }
                 />
             </View>
         );  
@@ -36,7 +36,7 @@ export class Post extends PureComponent {
                         ...styles.icon,
                         marginRight: 5,
                     }}
-                    source={ post.liked ? require('../../assets/like-full.png') : require('../../assets/like.png') }
+                    source={ post.liked ? require('../../../../assets/images/like-full.png') : require('../../../../assets/images/like.png') }
                 />
                 <Text>{ post.curtidas } likes</Text>
             </View>

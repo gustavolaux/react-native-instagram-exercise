@@ -1,26 +1,30 @@
 import React, { PureComponent } from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+
+import { CIcon } from '../';
 
 export class Header extends PureComponent {
     render() {
         return (
-            <View style={ styles.container }>
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/camera.png') }
-                />
-                <Image
-                    resizeMode='contain'
-                    style={ styles.logo }
-                    source={ require('../../assets/instagram_logo.png') }
-                />
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/send.png') }
-                />
+            <View style={ [this.props.style, styles.container] }>
+                <View>
+                    <CIcon
+                        name={ this.props.leftIcon }
+                        size={ styles.icons.height }
+                    />
+                </View>
+
+                { this.props.children }
+
+                <View>
+                    <CIcon
+                        name={ this.props.rightIcon }
+                        size={ styles.icons.height }
+                    />
+                </View>
             </View>
-        )
-    }
+        );
+    };
 }
 
 const styles = StyleSheet.create({
@@ -29,7 +33,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 10,
         paddingTop: 10,
-        backgroundColor: 'white',
+        backgroundColor: '#F8F8F8',
+        borderBottomWidth: 1,
+        borderColor: '#EBEBEB',
     },
     logo: {
         flex: 1,

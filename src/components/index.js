@@ -1,4 +1,4 @@
-export * from './Feed/Feed';
+export * from './CIcon/CIcon';
 export * from './Footer/Footer';
 export * from './Header/Header';
-export * from './Post/Post';
+export * from './SearchInput/SearchInput';

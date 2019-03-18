@@ -1,41 +1,22 @@
 import React, { PureComponent } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 export class Footer extends PureComponent {
-
     render() {
-        return(
-            <View style={ styles.footer }>
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/camera.png') }
-                />
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/send.png') }
-                />
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/camera.png') }
-                />
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/send.png') }
-                />
-                <Image
-                    style={ styles.icons }
-                    source={ require('../../assets/camera.png') }
-                />
+        return (
+            <View style={ [this.props.style, styles.footer] }>
+                { this.props.children }
             </View>
         );
-    }
+    };
 }
 
 const styles = StyleSheet.create({
     footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
         padding: 10,
+        borderColor: '#EBEBEB',
+        borderTopWidth: 1,
+        backgroundColor: '#F8F8F8',
     },
     icons: {
         width: 30,
