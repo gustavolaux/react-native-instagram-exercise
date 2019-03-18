@@ -24,10 +24,6 @@ export class SearchInput extends PureComponent {
         return (
             <View style={ styles.container }>
                 <Icon style={ styles.icon } size={ 20 } name='search' />
-                {/* <Image
-                    style={ styles.icon }
-                    source={ require('../../assets/images/search.png')}
-                /> */}
                 <TextInput
                     style={ styles.input }
                     value={ this.state.currentValue }

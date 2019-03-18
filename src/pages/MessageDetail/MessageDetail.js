@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react';
-import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, View, StyleSheet, Text, Dimensions } from 'react-native';
 
-import { Header, Footer } from './sections';
+import { MessageInput } from '../../components';
+import { Header } from './sections';
+
+const window = Dimensions.get('window');
 
 export class MessageDetail extends PureComponent {
 
@@ -10,6 +13,8 @@ export class MessageDetail extends PureComponent {
 
         this.state = {
             message: {
+                isOnline: false,
+                members: [],
                 conversation: [],
             },
         };
@@ -20,6 +25,14 @@ export class MessageDetail extends PureComponent {
             message: this.props.message,
         });
     }
+
+    getScrollViewRef = (ref) => {
+        this.scrollView = ref;
+    };
+
+    scrollBottom = () => {
+        this.scrollView.scrollToEnd({ animated: true });
+    };
 
     renderBaloon = ({owner, text}, i) => {
         const style = {
@@ -37,38 +50,68 @@ export class MessageDetail extends PureComponent {
         );
     };
 
+    handleMessage = (text) => {
+        const message = {
+            ...this.state.message,
+        };
+
+        message.conversation.unshift({
+            text: text,
+            owner: 'me',
+        });
+
+        this.setState({ message });
+    };
+
     render() {
         return (
-            <View style={ styles.container }>
-                <Header members={ this.state.message.members } />
-                <ScrollView style={ styles.container } contentContainerStyle={ styles.contentContainer } >
-                    { this.state.message.conversation.map(this.renderBaloon) }
-                </ScrollView>
-                {/* <Footer /> */}
+            <View style={ [styles.flex1, styles.container] }>
+                <Header message={ this.state.message } />
+
+                <KeyboardAvoidingView
+                    style={ styles.flex1 }
+                    // contentContainerStyle={ styles.asd }
+                    behavior='padding'
+                    keyboardVerticalOffset={20}
+                >
+                    <ScrollView
+                        style={ [styles.container] }
+                        contentContainerStyle={ [styles.contentContainer] }
+                        ref={ this.getScrollViewRef }
+                        onContentSizeChange={ this.scrollBottom }
+                    >
+                        { this.state.message.conversation.map(this.renderBaloon) }
+                    </ScrollView>
+
+                    <MessageInput action={ this.handleMessage } />
+                </KeyboardAvoidingView>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
+    flex1: {
         flex: 1,
+    },
+    container: {
         backgroundColor: 'white',
     },
     contentContainer: {
-        flex: 1,
         flexDirection: 'column-reverse',
-        marginBottom: 10,
+        paddingTop: 30,
+        paddingBottom: 10,
     },
     baloon: {
         backgroundColor: '#EFEFEF',
         borderRadius: 20,
-        height: 40,
+        minHeight: 30,
         marginHorizontal: 10,
         marginVertical: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        maxWidth: window.width * 0.8,
     },
 });

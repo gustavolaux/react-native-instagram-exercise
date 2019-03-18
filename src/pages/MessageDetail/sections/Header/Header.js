@@ -1,20 +1,33 @@
 import React, { PureComponent } from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, Text } from 'react-native';
 
-import { Header as BaseHeader } from '../../../../components';
+import { Header as BaseHeader, ProfilePicture } from '../../../../components';
 
 export class Header extends PureComponent {
+
     render() {
+        const {
+            title,
+            members,
+            isOnline,
+        } = this.props.message;
+
+        const memberName = members.length === 1 ? members[0].name : title;
+
         return (
             <BaseHeader
-                leftIcon='left-arrow'
-                rightIcon='paper-plane'
+                leftIcons={ [{ name: 'left-arrow', size: 30 }] }
+                rightIcons={ [{ name: 'paper-plane', size: 30 }, { name: 'paper-plane', size: 30 }] }
             >
-                <Image
-                    resizeMode='contain'
-                    style={ styles.logo }
-                    source={ require('../../../../assets/images/instagram_logo.png') }
-                />
+                <View style={ styles.container }>
+                    <ProfilePicture
+                        // style={ styles.container }
+                        size={ 30 }
+                        // isOnline={ isOnline }
+                        members={ members }
+                    />
+                    <Text style={ styles.title }>{ memberName }</Text>
+                </View>
             </BaseHeader>
         )
     }
@@ -22,18 +35,14 @@ export class Header extends PureComponent {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 10,
-        paddingTop: 10,
-        backgroundColor: 'white',
-    },
-    logo: {
         flex: 1,
-        height: 40,
+        paddingHorizontal: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
-    icons: {
-        width: 30,
-        height: 30,
+    title: {
+        // fontWeight: 'bold',
+        fontSize: 18,
+        paddingHorizontal: 5,
     },
 });

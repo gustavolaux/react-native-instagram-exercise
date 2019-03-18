@@ -2,7 +2,7 @@ export default {
     messages: [
         {
             members: [
-                { name: 'carod1az', picture: 'https://devilsworkshop.org/files/2013/01/enlarged-facebook-profile-picture.jpg' },
+                { name: 'williamcardozzo', picture: 'https://instagram.fpoa1-1.fna.fbcdn.net/vp/473e9a6679a618133cff7efe2bdcce2f/5D501323/t51.2885-19/s150x150/21042780_113476079326498_1227119822014251008_a.jpg?_nc_ht=instagram.fpoa1-1.fna.fbcdn.net' },
             ],
             isOnline: true,
             // lastSeen: ''
@@ -11,6 +11,32 @@ export default {
                 { owner: 'me', text: 'Também' },
                 { owner: 'other', text: 'Sim e contigo' },
                 { owner: 'me', text: 'Tudo certo?' },
+                { owner: 'me', text: 'Oi' },
+            ],
+        },
+        {
+            members: [
+                { name: 'carod1az', picture: 'https://devilsworkshop.org/files/2013/01/enlarged-facebook-profile-picture.jpg' },
+            ],
+            isOnline: true,
+            // lastSeen: ''
+            content: 'No way! 🙉',
+            conversation: [
+                { owner: 'me', text: 'fghsdhg8sdgd8syfdsyudshfiusdgfiysgdayfgusydagfyugsdyasdddfghdsiugidsfhigiuh' },
+                { owner: 'me', text: 'Também' },
+                { owner: 'other', text: 'Sim e contigo' },
+                { owner: 'me', text: 'Tudo certo?' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
+                { owner: 'me', text: 'Oi' },
                 { owner: 'me', text: 'Oi' },
             ],
         },
@@ -38,6 +64,12 @@ export default {
             title: 'too lit crew🔥',
             // lastSeen: ''
             content: '2 active today',
+            conversation: [
+                { owner: 'me', text: 'Também' },
+                { owner: 'other', text: 'Sim e contigo' },
+                { owner: 'me', text: 'Tudo certo?' },
+                { owner: 'me', text: 'Oi' },
+            ],
         },
         {
             members: [

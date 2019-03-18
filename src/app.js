@@ -16,7 +16,7 @@ export default class App extends Component {
             <View style={ styles.contentContainer }>
                 {/* <Feed feed={ feedApi.feed } /> */}
                 {/* <Direct messages={ directApi.messages } /> */}
-                <MessageDetail message={ directApi.messages[0] } />
+                <MessageDetail message={ directApi.messages[1] } />
             </View>
         );
     }
