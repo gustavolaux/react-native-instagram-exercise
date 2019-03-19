@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { PureComponent } from 'react';
 import { KeyboardAvoidingView, ScrollView, View, StyleSheet, Text, Dimensions } from 'react-native';
 
@@ -34,18 +35,16 @@ export class MessageDetail extends PureComponent {
         this.scrollView.scrollToEnd({ animated: true });
     };
 
-    renderBaloon = ({owner, text}, i) => {
+    renderBaloon = ({ owner, text }, i) => {
         const style = {
             alignSelf: owner === 'me' ? 'flex-end' : 'flex-start',
         };
 
         return (
-            <View 
-                key={ i }
-                // @ts-ignore
-                style={ [styles.baloon, style] }
-            >
-                <Text>{ text }</Text>
+            <View key={ i } style={ styles.baloonContainer }>
+                <View style={ [styles.baloon, style] }>
+                    <Text>{ text }</Text>
+                </View>
             </View>
         );
     };
@@ -69,18 +68,20 @@ export class MessageDetail extends PureComponent {
                 <Header message={ this.state.message } />
 
                 <KeyboardAvoidingView
-                    style={ styles.flex1 }
-                    // contentContainerStyle={ styles.asd }
+                    style={ [styles.flex1] }
                     behavior='padding'
                     keyboardVerticalOffset={20}
                 >
+
                     <ScrollView
-                        style={ [styles.container] }
-                        contentContainerStyle={ [styles.contentContainer] }
+                        style={ [styles.container, ] }
+                        contentContainerStyle={ [{ flexGrow: 1 } ] }
                         ref={ this.getScrollViewRef }
                         onContentSizeChange={ this.scrollBottom }
                     >
-                        { this.state.message.conversation.map(this.renderBaloon) }
+                        <View style={[ styles.contentContainer, styles.flex1, ]}>
+                            { this.state.message.conversation.map(this.renderBaloon) }
+                        </View>
                     </ScrollView>
 
                     <MessageInput action={ this.handleMessage } />
@@ -98,20 +99,21 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     contentContainer: {
-        flexDirection: 'column-reverse',
-        paddingTop: 30,
         paddingBottom: 10,
+        flexDirection: 'column-reverse',
+    },
+    baloonContainer: {
+        marginVertical: 2,
+        marginHorizontal: 10,
+        minHeight: 30,
     },
     baloon: {
         backgroundColor: '#EFEFEF',
         borderRadius: 20,
-        minHeight: 30,
-        marginHorizontal: 10,
-        marginVertical: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 15,
         paddingVertical: 10,
+        paddingHorizontal: 15,
         maxWidth: window.width * 0.8,
     },
 });
