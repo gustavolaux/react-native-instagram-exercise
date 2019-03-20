@@ -11,10 +11,12 @@
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-gesture-handler": "^1.1.0",
+    "react-native-linear-gradient": "^2.5.4",
     "react-native-vector-icons": "^6.4.1"
   },
   "devDependencies": {
     "babel-jest": "24.5.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "5.0.2",
     "jest": "24.5.0",
     "react-test-renderer": "16.4.1"

@@ -12,11 +12,12 @@ const Icon = createIconSetFromIcoMoon(
 
 export class CIcon extends PureComponent {
     render() {
-        const { name, size, style } = this.props;
+        const { name, size, style, iconStyle } = this.props;
 
         return (
             <View style={ style }>
                 <Icon
+                    style={ iconStyle }
                     name={ name }
                     size={ size }
                 />

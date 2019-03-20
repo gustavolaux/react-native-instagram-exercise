@@ -7,7 +7,7 @@ import {
 
 import feedApi from './api/feed.js';
 import directApi from './api/direct.js';
-import { Feed, Direct, MessageDetail } from './pages';
+import { Feed, Direct, MessageDetail, Login } from './pages';
 
 export default class App extends Component {
 
@@ -16,7 +16,8 @@ export default class App extends Component {
             <View style={ styles.contentContainer }>
                 {/* <Feed feed={ feedApi.feed } /> */}
                 {/* <Direct messages={ directApi.messages } /> */}
-                <MessageDetail message={ directApi.messages[0] } />
+                {/* <MessageDetail message={ directApi.messages[0] } /> */}
+                <Login />
             </View>
         );
     }
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
         backgroundColor: '#F8F8F8',
-        paddingTop: Platform.OS === 'ios' ? 20 : 0,
+        // paddingTop: Platform.OS === 'ios' ? 20 : 0,
     },
     profilePicture: {
         width: 50,
